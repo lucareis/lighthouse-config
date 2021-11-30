@@ -1,0 +1,17 @@
+approve:
+- lgtm_acts_as_approve: false
+  repos:
+  - $bot_user/$repo_name
+  require_self_approval: true
+config_updater:
+  gzip: false
+  maps:
+    config.yaml:
+      name: config
+    plugins.yaml:
+      name: plugins  
+plugins:
+  $bot_user/$repo_name:
+  - config-updater
+  - approve
+  - lgtm 
