@@ -1,7 +1,8 @@
 approve:
 - lgtm_acts_as_approve: false
   repos:
-  - $bot_user/$repo_name
+  - lucareis/
+  - lucareis/
   require_self_approval: true
 config_updater:
   gzip: false
@@ -9,9 +10,18 @@ config_updater:
     config.yaml:
       name: config
     plugins.yaml:
-      name: plugins  
+      name: plugins
+triggers:
+- repos:
+  - lucareis/
+  ignore_ok_to_test: false
+  elide_skipped_contexts: false
 plugins:
-  $bot_user/$repo_name:
+  lucareis/:
   - config-updater
   - approve
-  - lgtm 
+  - lgtm  
+  lucareis/:
+  - approve
+  - lgtm
+  - trigger
