@@ -1,8 +1,33 @@
 pod_namespace: lighthouse
 prowjob_namespace: lighthouse
+postsubmits:
+  lucareis/:
+    - agent: tekton-pipeline
+      branches:
+        - master
+      context: 
+      name: 
+      pipeline_run_spec:
+        serviceAccountName: app-builder
+        pipelineRef:
+          name: -pipeline
+        workspaces:
+          - name: shared-workspace
+            persistentvolumeclaim:
+              claimName: buildpacks-source-pvc
+        resources:
+          - name: build-image
+            resourceRef:
+              name: buildpacks-app-image
+        podTemplate:
+          volumes:
+            - name: buildpacks-cache
+              persistentVolumeClaim:
+                claimName: buildpacks-cache-pvc
 tide:
   queries:
   - labels:
     - approved
     repos:
-    - $bot_user/$repo_name
+    - lucareis/
+    - lucareis/
