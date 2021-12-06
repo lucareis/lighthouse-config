@@ -1,8 +1,8 @@
 approve:
 - lgtm_acts_as_approve: false
   repos:
-  - lucareis/
-  - lucareis/
+  - lucareis/lighthouse-config
+  - lucareis/hello
   require_self_approval: true
 config_updater:
   gzip: false
@@ -13,15 +13,15 @@ config_updater:
       name: plugins
 triggers:
 - repos:
-  - lucareis/
+  - lucareis/hello
   ignore_ok_to_test: false
   elide_skipped_contexts: false
 plugins:
-  lucareis/:
+  lucareis/config-lighthouse:
   - config-updater
   - approve
   - lgtm  
-  lucareis/:
+  lucareis/hello:
   - approve
   - lgtm
   - trigger
